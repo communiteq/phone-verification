@@ -23,7 +23,7 @@ after_initialize {
       {
         needs_verify_phone: object.custom_fields["needs_verify_phone"],
         phone_numbers: object.custom_fields["phone_numbers"],
-        show: (!object.admin || !PhoneVerificationHelper.invited_by_admin?(object))
+        hide: (object.admin || PhoneVerificationHelper.invited_by_admin?(object))
       }
     end
 
