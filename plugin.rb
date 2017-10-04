@@ -21,7 +21,7 @@ after_initialize {
     def self.admin_serialize_data(object)
       object.custom_fields ||= {}
       {
-        needs_verify_phone: object.custom_fields["needs_verify_phone"],
+        needs_verify_phone: PhoneVerificationHelper.invited_by_admin?(object) ? nil : object.custom_fields["needs_verify_phone"],
         phone_numbers: object.custom_fields["phone_numbers"]
       }
     end
@@ -55,6 +55,7 @@ after_initialize {
       !user.blocked &&
       !user.suspended? &&
       user.email_confirmed? &&
+      !self.invited_by_admin?(user) &&
       user.custom_fields["needs_verify_phone"] == "true"
     end
   end
@@ -341,8 +342,11 @@ after_initialize {
     end
   end
 
-  add_model_callback(User, :after_commit, on: :create) do
-    Jobs.enqueue_in(3, :set_user_needs_verify_phone, user_id: self.id)
+  add_model_callback(User, :before_create) do
+    if SiteSetting.phone_verification_enabled
+      self.custom_fields["needs_verify_phone"] == "true"
+    end
+    #Jobs.enqueue_in(3, :set_user_needs_verify_phone, user_id: self.id)
   end
 
 }
