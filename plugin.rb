@@ -21,8 +21,9 @@ after_initialize {
     def self.admin_serialize_data(object)
       object.custom_fields ||= {}
       {
-        needs_verify_phone: PhoneVerificationHelper.invited_by_admin?(object) ? nil : object.custom_fields["needs_verify_phone"],
-        phone_numbers: object.custom_fields["phone_numbers"]
+        needs_verify_phone: object.custom_fields["needs_verify_phone"],
+        phone_numbers: object.custom_fields["phone_numbers"],
+        show: (!object.admin || !PhoneVerificationHelper.invited_by_admin?(object))
       }
     end
 
