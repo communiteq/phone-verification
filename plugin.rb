@@ -344,7 +344,7 @@ after_initialize {
 
   add_model_callback(User, :before_create) do
     if SiteSetting.phone_verification_enabled
-      self.custom_fields["needs_verify_phone"] == "true"
+      self.custom_fields["needs_verify_phone"] = "true"
     end
     #Jobs.enqueue_in(3, :set_user_needs_verify_phone, user_id: self.id)
   end
