@@ -1,0 +1,21 @@
+.flat-input {
+  border-radius: 0 !important;
+  box-shadow: unset !important;
+}
+
+.intl-tel-input.allow-dropdown input.phone-numbers-input {
+  height: 30px !important;
+  margin-bottom: 5px !important;
+}
+
+.phone-icon-verified {
+  color: green !important;
+}
+
+.phone-icon-not-verified {
+  color: red !important;
+}
+
+.admin-phone-numbers .inline-spinner {
+  display: inline !important;
+}

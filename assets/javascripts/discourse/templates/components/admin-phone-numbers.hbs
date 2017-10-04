@@ -1,0 +1,38 @@
+<div class='display-row admin-phone-numbers'>
+  <div class='field'>
+    {{i18n 'phone_verification.admin.phone_numbers'}}
+    {{admin-phone-verification-status isVerified=isVerified isNotVerified=isNotVerified}}
+  </div>
+  <div class='value'>
+
+    {{#if editingPhone}}
+      {{#conditional-loading-spinner condition=savingPhoneNumbers size='small'}}
+        {{intl-tel-input phoneNumbers=model.phone_verification.phone_numbers savePhoneNumbers=(action "savePhoneNumbers")}}
+        {{d-button action="cancelEditingPhone" label="phone_verification.admin.cancel"}}
+      {{/conditional-loading-spinner}}
+    {{else}}
+      {{model.phone_verification.phone_numbers}}
+    {{/if}}
+
+  </div>
+  <div class='controls'>
+
+    {{#if notEditingPhone}}
+      {{d-button action="editPhone" icon="pencil"}}
+
+      {{#conditional-loading-spinner condition=sendingCode size='small'}}
+
+        {{#if model.phone_verification.phone_numbers}}
+          {{d-button action="deletePhoneNumbers" label="phone_verification.admin.delete_phone_numbers" class="btn-danger"}}
+          {{d-button action="sendCode" label="phone_verification.admin.send_code"}}
+        {{/if}}
+
+        {{d-button action="forceVerification" label="phone_verification.admin.force_verification"}}
+
+        {{d-button action="setAsVerified" label="phone_verification.admin.set_as_verified"}}
+
+      {{/conditional-loading-spinner}}
+    {{/if}}
+
+  </div>
+</div>

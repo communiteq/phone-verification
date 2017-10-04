@@ -1,0 +1,20 @@
+en:
+  phone_verification:
+    invalid_verification_code: "Invalid verification code"
+    not_allowed: "You are not allowed to do this action"
+    user_not_found: "User not found"
+    phone_numbers_exists: "Phone number is exists in the database"
+    invalid_phone_numbers: "Invalid phone number"
+    max_edit_phone_numbers_reached: "Maximum number of max_edit_phone_numbers is reached"
+    max_verification_code_sent_reached: "Maximum number of max_verification_code_sent_a_day is reached"
+    verification_code_expired: "The verification code is expired"
+    sms_content: "Use %{code} to verify your SWAPD account."
+    sms_provider_not_set: "SMS provider has not been setup yet."
+  site_settings:
+    phone_verification_enabled: "Enable phone verification"
+    phone_verification_max_edit_phone_numbers_allowed: "Maximum number of users can edit their phone number"
+    phone_verification_max_sms_verification_code_sent_a_day: "Maximum number of SMS verification code sent per account a day"
+    phone_verification_code_valid_for: "Number of hour(s) the verification code is valid for"
+    phone_verification_twilio_account_sid: "Twilio account SID"
+    phone_verification_twilio_auth_token: "Twilio auth token"
+    phone_verification_twilio_sending_phone_numbers: "Verified Twilio phone number to use to send SMS messages"

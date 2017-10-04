@@ -1,0 +1,22 @@
+plugins:
+  phone_verification_enabled:
+    default: true
+    client: true
+  phone_verification_max_edit_phone_numbers_allowed:
+    default: 2
+    client: true
+  phone_verification_max_sms_verification_code_sent_a_day:
+    default: 3
+    client: true
+  phone_verification_code_valid_for:
+    default: 1
+    client: true
+  phone_verification_twilio_account_sid:
+    default: ""
+    client: true
+  phone_verification_twilio_auth_token:
+    default: ""
+    client: true
+  phone_verification_twilio_sending_phone_numbers:
+    default: ""
+    client: true

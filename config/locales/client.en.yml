@@ -1,0 +1,27 @@
+en:
+  js:
+    phone_verification:
+      phone_numbers_not_valid: "Invalid phone number"
+      title: "Phone Verification"
+      enter_phone_numbers: "In order to continue using our site, we needs to verify your phone number. You have <strong>{{edit_phone_numbers_left}}</strong> more chance(s) to edit your phone number."
+      enter_the_code: "Please enter the verification code sent to <strong>{{phone_numbers}}</strong>. The code is valid for {{valid_for}} hour(s). You have <strong>{{send_code_left}}</strong> more chance(s) to resend verification code."
+      help_message: "If you're having trouble, please contact <strong>support@swapd.co</strong>"
+      success_message: "Your phone number has been verified. You will be redirected to homepage."
+      sms_provider_not_set: "SMS provider has not been setup yet."
+      not_allowed: "You are not allowed to view this page"
+      phone_numbers:
+        save: "Save"
+        edit: "Edit phone number"
+      verification_code:
+        verify: "Verify"
+        resend: "Resend"
+      admin:
+        send_code: "Send verification code"
+        phone_numbers: "Phone Number"
+        verification_code_sent: "Verification code has been sent to <strong>{{phone_numbers}}</strong>"
+        phone_verified: "Phone number verified"
+        phone_not_verified: "Phone number not verified"
+        cancel: "Cancel"
+        delete_phone_numbers: "Delete"
+        force_verification: "Force verification"
+        set_as_verified: "Set as verified"

@@ -1,0 +1,62 @@
+<div id="simple-container">
+  <div class="phone-verification account-created">
+    <h2>{{{i18n "phone_verification.title"}}}</h2>
+    <div class="ac-message">
+
+      {{#if model.needs_verify_phone}}
+
+        {{#if model.sms_provider_is_set}}
+
+          {{#conditional-loading-spinner condition=performingAction size='small'}}
+
+            {{#if showSuccessMsg}}
+              {{{i18n "phone_verification.success_message"}}}
+            {{/if}}
+
+            {{#if isShowEnterPhone}}
+              <p>{{{i18n "phone_verification.enter_phone_numbers" edit_phone_numbers_left=model.edit_phone_numbers_left autocomplete="off"}}}</p>
+              {{#if errorMsg}}
+                <p class="alert">{{errorMsg}}</p>
+              {{/if}}
+              <p class="phone-numbers-form-user">
+                {{intl-tel-input phoneNumbers=model.phone_numbers savePhoneNumbers=(action "savePhoneNumbers")}}
+              </p>
+            {{/if}}
+
+
+            {{#if isShowEnterCode}}
+              <p>{{{i18n "phone_verification.enter_the_code" phone_numbers=model.phone_numbers valid_for=model.verification_code_valid_for send_code_left=model.send_code_left}}}</p>
+              {{#if errorMsg}}
+                <p class="alert">{{errorMsg}}</p>
+              {{/if}}
+              <p>
+                {{text-field value=verificationCode autofocus="autofocus" class="flat-input" autocomplete="off"}}
+                {{d-button action="verifyCode" label="phone_verification.verification_code.verify" disabled=isVerifyCodeButtonDisabled class="btn-primary"}}
+              </p>
+              <div class='activation-controls'>
+                {{#if isShowResendButton}}
+                  {{d-button action="resendCode" label="phone_verification.verification_code.resend" disabled=performingAction class="btn-primary"}}
+                {{/if}}
+                {{#if isShowEditButton}}
+                  {{d-button action="editPhoneNumbers" label="phone_verification.phone_numbers.edit" disabled=performingAction}}
+                {{/if}}
+              </div>
+            {{/if}}
+
+          {{/conditional-loading-spinner}}
+
+        {{else}}
+          <p class="alert">{{{i18n "phone_verification.sms_provider_not_set"}}}</p>
+        {{/if}}
+
+      {{else}}
+
+        <p class="alert">{{{i18n "phone_verification.not_allowed"}}}</p>
+
+      {{/if}}
+
+      <p>{{{i18n "phone_verification.help_message"}}}</p>
+
+    </div>
+  </div>
+</div>
