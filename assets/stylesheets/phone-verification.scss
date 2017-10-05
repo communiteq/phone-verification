@@ -22,6 +22,10 @@
 
 .user-main .about .phone-numbers {
 
+  .value, .field {
+    width: auto;
+  }
+
   .btn {
     margin: 2px 5px 2px 0;
   }
@@ -36,4 +40,8 @@
     padding: 0;
   }
 
+}
+
+.intl-tel-input .selected-flag {
+  height: 30px;
 }

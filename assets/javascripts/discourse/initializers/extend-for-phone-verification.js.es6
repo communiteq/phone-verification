@@ -10,7 +10,7 @@ export default {
     withPluginApi('0.1', api => {
 
       const currentUser = api.getCurrentUser();
-      console.log(currentUser);
+      //console.log(currentUser);
 
       api.onPageChange((url, title) => {
         const path = url.split("?")[0];
