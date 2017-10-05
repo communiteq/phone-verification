@@ -1,6 +1,6 @@
 # name: phone-verification
 # about: Phone verification
-# version: 0.2
+# version: 0.3
 # author: Muhlis Budi Cahyono (muhlisbc@gmail.com)
 # url: https://github.com/muhlisbc
 
@@ -22,9 +22,9 @@ after_initialize {
       object.custom_fields ||= {}
       {
         needs_verify_phone: object.custom_fields["needs_verify_phone"],
-        is_needs_verify_phone: PhoneVerificationHelper.is_needs_verify_phone(object),
+        is_needs_verify_phone: self.is_needs_verify_phone(object),
         phone_numbers: object.custom_fields["phone_numbers"],
-        hide: (object.admin || PhoneVerificationHelper.invited_by_admin?(object))
+        hide: (object.admin || self.invited_by_admin?(object))
       }
     end
 
