@@ -1,6 +1,6 @@
 # name: phone-verification
 # about: Phone verification
-# version: 0.1
+# version: 0.2
 # author: Muhlis Budi Cahyono (muhlisbc@gmail.com)
 # url: https://github.com/muhlisbc
 
