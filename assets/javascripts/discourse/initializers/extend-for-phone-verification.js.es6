@@ -16,9 +16,9 @@ export default {
 
         if (path == "/phone-verification" || path == "/phone-verification/") {
           if (currentUser && ss.phone_verification_enabled) {
-            console.log(currentUser);
+            //console.log(currentUser);
 
-            if (!currentUser.get("needs_verify_phone")) {
+            if (!currentUser.get("phone-verification.is_needs_verify_phone")) {
               window.location = "/";
             }
 
@@ -26,7 +26,7 @@ export default {
             window.location = "/";
           }
         } else {
-          if (currentUser && currentUser.get("needs_verify_phone")) {
+          if (currentUser && currentUser.get("phone-verification.is_needs_verify_phone")) {
             window.location = "/phone-verification";
           }
         }

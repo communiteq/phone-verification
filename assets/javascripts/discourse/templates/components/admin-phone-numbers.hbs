@@ -8,7 +8,7 @@
     {{#if editingPhone}}
       {{#conditional-loading-spinner condition=savingPhoneNumbers size='small'}}
         {{intl-tel-input phoneNumbers=model.phone_verification.phone_numbers savePhoneNumbers=(action "savePhoneNumbers")}}
-        {{d-button action="cancelEditingPhone" label="phone_verification.admin.cancel"}}
+        {{d-button action="cancelEditingPhone" label="phone_verification.admin.cancel" class="btn-danger"}}
       {{/conditional-loading-spinner}}
     {{else}}
       {{model.phone_verification.phone_numbers}}
@@ -18,18 +18,18 @@
   <div class='controls'>
 
     {{#if notEditingPhone}}
-      {{d-button action="editPhone" icon="pencil"}}
+      {{d-button action="editPhone" icon="pencil" class="btn-primary"}}
 
       {{#conditional-loading-spinner condition=sendingCode size='small'}}
 
         {{#if model.phone_verification.phone_numbers}}
           {{d-button action="deletePhoneNumbers" label="phone_verification.admin.delete_phone_numbers" class="btn-danger"}}
-          {{d-button action="sendCode" label="phone_verification.admin.send_code"}}
+          {{d-button action="sendCode" label="phone_verification.admin.send_code" class="btn-primary"}}
         {{/if}}
 
-        {{d-button action="forceVerification" label="phone_verification.admin.force_verification"}}
+        {{d-button action="forceVerification" label="phone_verification.admin.force_verification" class="btn-primary"}}
 
-        {{d-button action="setAsVerified" label="phone_verification.admin.set_as_verified"}}
+        {{d-button action="setAsVerified" label="phone_verification.admin.set_as_verified" class="btn-primary"}}
 
       {{/conditional-loading-spinner}}
     {{/if}}

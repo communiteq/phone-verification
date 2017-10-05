@@ -22,6 +22,7 @@ after_initialize {
       object.custom_fields ||= {}
       {
         needs_verify_phone: object.custom_fields["needs_verify_phone"],
+        is_needs_verify_phone: PhoneVerificationHelper.is_needs_verify_phone(object),
         phone_numbers: object.custom_fields["phone_numbers"],
         hide: (object.admin || PhoneVerificationHelper.invited_by_admin?(object))
       }
@@ -58,6 +59,18 @@ after_initialize {
       #user.email_confirmed? &&
       !self.invited_by_admin?(user) &&
       user.custom_fields["needs_verify_phone"] == "true"
+    end
+  end
+
+  module ::PhoneVerificationSerializerHelper
+    def self.included(base)
+      base.class_eval {
+        attributes :phone_verification
+
+        def phone_verification
+          PhoneVerificationHelper.admin_serialize_data(object)
+        end
+      }
     end
   end
 
@@ -325,23 +338,13 @@ after_initialize {
   end
 
   require_dependency 'current_user_serializer'
-  class ::CurrentUserSerializer
-    attributes :needs_verify_phone
-
-    def needs_verify_phone
-      PhoneVerificationHelper.is_needs_verify_phone(object)
-    end
-
-  end
+  ::CurrentUserSerializer.send(:include, PhoneVerificationSerializerHelper)
 
   require_dependency 'admin_detailed_user_serializer'
-  class ::AdminDetailedUserSerializer
-    attributes :phone_verification
+  ::AdminDetailedUserSerializer.send(:include, PhoneVerificationSerializerHelper)
 
-    def phone_verification
-      PhoneVerificationHelper.admin_serialize_data(object)
-    end
-  end
+  require_dependency 'user_serializer'
+  ::UserSerializer.send(:include, PhoneVerificationSerializerHelper)
 
   add_model_callback(User, :before_create) do
     if SiteSetting.phone_verification_enabled
