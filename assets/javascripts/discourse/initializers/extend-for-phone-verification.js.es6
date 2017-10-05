@@ -20,7 +20,7 @@ export default {
           if (currentUser && ss.phone_verification_enabled) {
 
             // if doesn't needs to verify phone
-            if (!currentUser.get("phone-verification").is_needs_verify_phone) {
+            if (!currentUser.get("phone_verification.is_needs_verify_phone")) {
               window.location = "/";
             }
 
@@ -29,7 +29,7 @@ export default {
           }
         } else {
           // if not on the verification page
-          if (currentUser && currentUser.get("phone-verification").is_needs_verify_phone) {
+          if (currentUser && currentUser.get("phone_verification.is_needs_verify_phone")) {
             window.location = "/phone-verification";
           }
         }
