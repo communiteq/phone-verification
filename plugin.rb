@@ -55,7 +55,7 @@ after_initialize {
       self.sms_provider_is_set? &&
       !user.blocked &&
       !user.suspended? &&
-      user.email_confirmed? &&
+      #user.email_confirmed? &&
       !self.invited_by_admin?(user) &&
       user.custom_fields["needs_verify_phone"] == "true"
     end
