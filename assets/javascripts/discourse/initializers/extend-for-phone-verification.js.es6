@@ -16,9 +16,11 @@ export default {
         const path = url.split("?")[0];
 
         if (path == "/phone-verification" || path == "/phone-verification/") {
+          // if on the verification page
           if (currentUser && ss.phone_verification_enabled) {
 
-            if (!currentUser.get("phone-verification.is_needs_verify_phone")) {
+            // if doesn't needs to verify phone
+            if (!currentUser.get("phone-verification").is_needs_verify_phone) {
               window.location = "/";
             }
 
@@ -26,7 +28,8 @@ export default {
             window.location = "/";
           }
         } else {
-          if (currentUser && currentUser.get("phone-verification.is_needs_verify_phone")) {
+          // if not on the verification page
+          if (currentUser && currentUser.get("phone-verification").is_needs_verify_phone) {
             window.location = "/phone-verification";
           }
         }
