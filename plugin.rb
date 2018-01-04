@@ -54,7 +54,7 @@ after_initialize {
     def self.is_needs_verify_phone(user)
       SiteSetting.phone_verification_enabled &&
       self.sms_provider_is_set? &&
-      !user.blocked &&
+      !user.silenced? &&
       !user.suspended? &&
       !user.admin? &&
       #user.email_confirmed? &&
