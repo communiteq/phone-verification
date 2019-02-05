@@ -10,7 +10,7 @@ enabled_site_setting :phone_verification_enabled
 
 gem "phonelib", "0.6.15", require: true
 gem "libxml-ruby", "3.0.0", require: false
-gem "twilio-ruby", "5.2.3", require: true
+gem "twilio-ruby", "5.20.0", require: true
 
 after_initialize {
 
